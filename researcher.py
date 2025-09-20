@@ -41,4 +41,4 @@ agent_os = AgentOS(agents=[researcher])
 app = agent_os.get_app()
 
 if __name__ == "__main__":
-    agent_os.serve("researcher:app", port=7777)
+    agent_os.serve("researcher:app", reload=True)
