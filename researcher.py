@@ -2,7 +2,7 @@ from agno.agent import Agent
 from agno.models.openai import OpenAIChat
 from agno.tools.tavily import TavilyTools
 
-from agno.playground import Playground, serve_playground_app
+from agno.os import AgentOS
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -35,6 +35,10 @@ researcher = Agent(
     """
 )
 
-app = Playground(agents=[researcher]).get_app()
+
+# Create the AgentOS
+agent_os = AgentOS(agents=[researcher])
+app = agent_os.get_app()
+
 if __name__ == "__main__":
-    serve_playground_app("researcher:app", reload=True)
+    agent_os.serve("researcher:app", port=7777)
